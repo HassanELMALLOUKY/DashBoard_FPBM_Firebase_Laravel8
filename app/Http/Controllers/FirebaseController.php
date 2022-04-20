@@ -18,6 +18,14 @@ class FirebaseController extends Controller
         $this->database = $database;
         $this->storage = $storage;
     }
+    public function showAvis(){
+        $avis = $this->database->getReference('avis')->getValue();
+        return view("avis")->with("avis",$avis);
+    }
+    public function updateAvis(){
+        $avisUpdated = $this->database->getReference('avis')->getValue();
+        return view("avis")->with("avis",$avisUpdated);
+    }
     public function insertAvis(Request $request)
 
     {
@@ -31,6 +39,27 @@ class FirebaseController extends Controller
         //$postRef = $this->database->getReference("avis/"."11111")->push($postData);
         $postRef = $this->database->getReference("avis")->push($postData);
         return redirect("avis")->with("msg","avis added");
+    }
+    public function insertEmplois(Request $request){
+        $storage = app('firebase.storage'); // This is an instance of Google\Cloud\Storage\StorageClient from kreait/firebase-php library
+        $defaultBucket = $storage->getBucket();
+        $image = $request->file('emploiFile');
+        $name = (string) Str::uuid().".".$image->getClientOriginalExtension(); // use Illuminate\Support\Str;
+        $pathName = $image->getPathName();
+        $file = fopen($pathName, 'r');
+        $object = $defaultBucket->upload($file, [
+            'name' => $name,
+        ]);
+        $imageReference = app('firebase.storage')->getBucket()->object($name);
+        $image = $imageReference->signedUrl(new \DateTime('04/20/2024'));
+        $postData = [
+            "Name"=>$request->semestre,
+            "PDF"=>$image,
+
+        ];
+        $postRef = $this->database->getReference("Emplois du temps/".$request->cycle."/".$request->filiere)->push($postData);
+
+        return redirect("/emploie")->with("msg","emplois added");
     }
     public function insertStudent(Request $request)
 
@@ -52,9 +81,9 @@ class FirebaseController extends Controller
         $numberStudent=$this->database->getReference('student');
         try {
             $snapshot = $numberStudent->getSnapshot()->numChildren();
-            return view("dash",compact("snapshot"));
+            return view("home",compact("snapshot"));
         } catch (Exception $exception){
-            return view("dash")->with(["exception"=>$exception->getMessage()]);
+            return view("home")->with(["exception"=>$exception->getMessage()]);
         }
     }
     /*public function show(){
@@ -80,9 +109,9 @@ class FirebaseController extends Controller
         $numberStudent=$this->database->getReference('student');
         try {
             $snapshot = $numberStudent->getSnapshot()->numChildren();
-            return view("dash",compact("snapshot"))->with("students", $students);
+            return view("home",compact("snapshot"))->with("students", $students);
         } catch (Exception $exception){
-            return view("dash")->with(["students" => $students,"exception"=>$exception->getMessage()]);
+            return view("home")->with(["students" => $students,"exception"=>$exception->getMessage()]);
         }
 
 
@@ -91,9 +120,29 @@ class FirebaseController extends Controller
 
     {   $id=$request->id;
         $postData = [
-            "Model".$request->moduleN=>[
-                'name'=>$request->moduleName,
-                'note'=>$request->note,
+            "Model1"=>[
+                'name'=>$request->moduleName1,
+                'note'=>$request->note1,
+            ],
+            "Model2"=>[
+                'name'=>$request->moduleName2,
+                'note'=>$request->note2,
+            ],
+            "Model3"=>[
+                'name'=>$request->moduleName3,
+                'note'=>$request->note3,
+            ],
+            "Model4"=>[
+                'name'=>$request->moduleName4,
+                'note'=>$request->note4,
+            ],
+            "Model5"=>[
+                'name'=>$request->moduleName5,
+                'note'=>$request->note5,
+            ],
+            "Model6"=>[
+                'name'=>$request->moduleName6,
+                'note'=>$request->note6,
             ],
             "sName"=>$request->semestre,
         ];

@@ -77,11 +77,9 @@
                           viewBox="0 0 24 24"
                           stroke="currentColor"
                         >
-                          <path
-                            d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
-                          ></path>
+
                         </svg>
-                        <span>Log out</span>
+                         <a href="/login"></a>
                       </a>
                   </li>
 
@@ -118,7 +116,7 @@
                   </li>
                   <li class="py-2 md:my-0 hover:bg-purple-100 lg:hover:bg-transparent">
                      <a href="/emploie" class="block pl-4 align-middle text-gray-700 no-underline hover:text-purple-500 border-l-4 border-transparent lg:hover:border-gray-400">
-                     <span class="pb-1 md:pb-0 text-sm">Emploies</span>
+                     <span class="pb-1 md:pb-0 text-sm">Empois du temps</span>
                      </a>
                   </li>
                   <li class="py-2 md:my-0 hover:bg-purple-100 lg:hover:bg-transparent">
@@ -137,6 +135,7 @@
          </div>
          <div class="w-full lg:w-4/5 p-8 mt-6 lg:mt-0 text-gray-900 leading-normal bg-white border border-gray-400 border-rounded">
             <!--Title-->
+
             <div class="font-sans">
                <h1 class="font-sans break-normal text-gray-900 pt-6 pb-2 text-xl">Dashboard Admin</h1>
                <hr class="border-b border-gray-400">

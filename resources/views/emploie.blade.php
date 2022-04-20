@@ -77,11 +77,8 @@
                           viewBox="0 0 24 24"
                           stroke="currentColor"
                         >
-                          <path
-                            d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
-                          ></path>
+
                         </svg>
-                        <span>Log out</span>
                       </a>
                   </li>
 
@@ -146,14 +143,14 @@
              @endif
              <!--Avis Form-->
              <div class="grid place-items-center mt-9">
-              <form class="w-full max-w-lg" action="{{route("uploadFile")}}" method="post" >
+              <form class="w-full max-w-lg" action="{{route("uploadFile")}}" method="post" enctype="multipart/form-data">
                   @csrf
                 <div class="flex flex-wrap -mx-3 mb-6">
                   <div class="w-full px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                       Cycle
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Cycle">
+                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Cycle" name="cycle">
                   </div>
 
                 </div>
@@ -162,7 +159,7 @@
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                       Fillière
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="password" placeholder="Fillière">
+                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="text" placeholder="Fillière" name="filiere">
                   </div>
                 </div>
                 <div class="flex flex-wrap -mx-3 mb-2">
@@ -170,7 +167,7 @@
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
                       Semestre
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="text" placeholder="Semestre">
+                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="text" placeholder="Semestre" name="semestre">
                   </div>
                   <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <div class="flex justify-center">

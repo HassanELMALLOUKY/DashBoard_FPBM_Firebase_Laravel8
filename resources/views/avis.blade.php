@@ -75,11 +75,7 @@
                           viewBox="0 0 24 24"
                           stroke="currentColor"
                         >
-                          <path
-                            d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
-                          ></path>
                         </svg>
-                        <span>Log out</span>
                       </a>
                   </li>
 
@@ -116,7 +112,7 @@
                  </li>
                  <li class="py-2 md:my-0 hover:bg-purple-100 lg:hover:bg-transparent">
                     <a href="/emploie" class="block pl-4 align-middle text-gray-700 no-underline hover:text-purple-500 border-l-4 border-transparent lg:hover:border-gray-400">
-                    <span class="pb-1 md:pb-0 text-sm">Emploie</span>
+                    <span class="pb-1 md:pb-0 text-sm">Empois du temps</span>
                     </a>
                  </li>
                  <li class="py-2 md:my-0 hover:bg-purple-100 lg:hover:bg-transparent">
@@ -174,7 +170,35 @@
                 </div>
               </form>
             <!--Table-->
-
+                <div class="w-full mt-6 overflow-hidden rounded-lg shadow-xs">
+                    <div class="w-full overflow-x-auto">
+                        <table class="w-full whitespace-no-wrap" >
+                            <thead>
+                            <tr
+                                class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
+                            >
+                                <th class="px-4 py-3">Titre</th>
+                                <th class="px-4 py-3">Description</th>
+                                <th class="px-4 py-3">Date</th>
+                                <th class="px-4 py-3">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody  class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                            @foreach($avis as $avi)
+                                <tr class="text-gray-700 dark:text-gray-400">
+                                    <td class="px-4 py-3">{{$avi["title"]}} </td>
+                                    <td class="px-4 py-3 text-sm"> {{$avi["description"]}}</td>
+                                    <td class="px-4 py-3">{{$avi["date"]}} </td>
+                                    <td class="px-4 py-3 text-xs">
+                                      <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full"> Edit</button>
+                                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"> Delete</button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 			</pre>
          </div>
       </div>
